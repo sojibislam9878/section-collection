@@ -86,7 +86,7 @@ const AboutUs = ({ attributes, setAttributes, device }) => {
                   {/* Badge Icon */}
                   {styles?.heading?.button?.icon?.svg ? (
                     <div
-                      className="btn-icon"
+                      className="btn-icon align-middle fs-20 flex-shrink-0"
                       dangerouslySetInnerHTML={{
                         __html: styles?.heading?.button?.icon?.svg,
                       }}
@@ -263,15 +263,14 @@ const AboutUs = ({ attributes, setAttributes, device }) => {
                           <MediaUpload
                             onSelect={onSelectImage}
                             allowedTypes={["image"]}
-                            value={item.image?.url}
+                            value={item?.image?.url}
                             render={({ open }) => (
                               <div onClick={open} style={{ cursor: "pointer" }}>
-                                {item.image?.url ? (
+                                {item?.image?.url ? (
                                   <img
                                     className="img-fluid"
-                                    src={item.image?.url}
+                                    src={item?.image?.url}
                                     alt="Selected"
-                                    style={{ maxWidth: "100%", height: "auto" }}
                                   />
                                 ) : (
                                   <Button variant="primary">

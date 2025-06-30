@@ -62,7 +62,7 @@ const Settings = ({ attributes, setAttributes, device }) => {
                 />
               )}
 
-              {"advanced" === tab.name && (
+              {/* {"advanced" === tab.name && (
                 <Advanced
                   advanced={advanced}
                   onChange={(v) => {
@@ -72,7 +72,7 @@ const Settings = ({ attributes, setAttributes, device }) => {
                   }}
                   // isPremium={true}
                 />
-              )}
+              )} */}
             </>
           )}
         </TabPanel>

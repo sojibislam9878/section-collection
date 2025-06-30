@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Section Collection
  * Description: A versatile section collection plugin featuring essential UI blocks to craft impactful, engaging, and user-centric web pages.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
@@ -27,7 +27,7 @@ if( !class_exists( 'BPSCPlugin' ) ){
 		}
 
 		function onInit(){
-			$blocks =['testimonial_block', 'timeline_block', 'ticker', 'about-us', 'team_section', 'faq', 'call-to-actions', 'info-list-block', 'hero-section'];
+			$blocks =['testimonial_block', 'timeline_block', 'ticker', 'about-us', 'team-section', 'faq', 'call-to-actions', 'info-list-block', 'hero-section', 'pricing-table-section'];
 			foreach ( $blocks as $block ) {
 				register_block_type( __DIR__ . "/build/".$block );
 			}

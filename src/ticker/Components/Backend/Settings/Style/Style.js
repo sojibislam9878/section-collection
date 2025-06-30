@@ -141,14 +141,12 @@ const Style = ({ attributes, setAttributes,device }) => {
         selectTheme ==="theme3" ?<>
         <UnitControl
         onChange={ value => setAttributes({styles: updateData(styles,value,"ticker","icon","image","width")})}
-        onUnitChange={ () => 'console.log("new unit")' }
         label="Image Width"
         units={[{ value: 'px', label: 'px' },{ value: 'em', label: 'EM' },{ value: 'rem', label: 'REM' }]}
       
         value={ ticker?.icon?.image?.width } />
         <UnitControl
         onChange={ value => setAttributes({styles: updateData(styles,value,"ticker","icon","image","height")})}
-        onUnitChange={ () =>' console.log("new unit")' }
         label="Image Height"
         units={[{ value: 'px', label: 'px' },{ value: 'em', label: 'EM' },{ value: 'rem', label: 'REM' }]}
       
@@ -157,7 +155,6 @@ const Style = ({ attributes, setAttributes,device }) => {
           setAttributes({ styles: updateData(styles,value,"ticker","icon","color") })
         }} /><UnitControl
         onChange={ value => setAttributes({styles: updateData(styles,value,"ticker","icon","size")})}
-        onUnitChange={ () => 'console.log("new unit")' }
         label="Icon Size"
         units={[{ value: 'px', label: 'px' },{ value: 'em', label: 'EM' },{ value: 'rem', label: 'REM' }]}
       

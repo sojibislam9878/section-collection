@@ -31,9 +31,9 @@
       "default": {
         "heading": {
           "image": {
-            "desktop": "https://i.ibb.co.com/wNLQgVPt/about-2-img-mobile.png",
-            "mobile": "https://i.ibb.co.com/wNLQgVPt/about-2-img-mobile.png",
-            "tablet": "https://i.ibb.co.com/wNLQgVPt/about-2-img-mobile.png"
+            "desktop": "https://templates.bplugins.com/wp-content/uploads/2025/05/about-2-img-mobile.40704995-4.png",
+            "mobile": "https://templates.bplugins.com/wp-content/uploads/2025/05/about-2-img-mobile.40704995-4.png",
+            "tablet": "https://templates.bplugins.com/wp-content/uploads/2025/05/about-2-img-mobile.40704995-4.png"
           },
           "title": "Our Mission is to Make Work Meaningful",
           "button": {
@@ -125,9 +125,9 @@
           "layout": {
             "rowDirection": false,
             "image": {
-              "desktop": { "height": "100%", "width": "100%" },
-              "tablet": { "height": "100%", "width": "100%" },
-              "mobile": { "height": "100%", "width": "100%" }
+              "desktop": { "height": "256", "width": "526" },
+              "tablet": { "height": "134", "width": "276" },
+              "mobile": { "height": "156", "width": "321" }
             },
             "sectionPadding": {
               "desktop": 60,
@@ -228,11 +228,21 @@
           },
           "icon": {
             "size": {
-              "desktop": 119,
-              "tablet": 119,
-              "mobile": 119
+              "desktop": {
+                "width": 119,
+                "height": 110
+              },
+              "tablet": {
+                "width": 119,
+                "height": 110
+              },
+              "mobile": {
+                "width": 119,
+                "height": 110
+              }
             }
           },
+          
           "separator": {
             "color": "#495057",
             "width": 1

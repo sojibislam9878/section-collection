@@ -1,22 +1,9 @@
 import { __ } from "@wordpress/i18n";
-import about from "../assets/about-us/style-one/about-2-img-mobile.png"
-import icon1 from "../assets/about-us/style-one/about-2-icon-1.png"
-import icon2 from "../assets/about-us/style-one/about-2-icon-2.png"
-import icon3 from "../assets/about-us/style-one/about-2-icon-3.png"
-import icon4 from "../assets/about-us/style-one/about-2-icon-4.png"
-import about2img1 from "../assets/about-us/style-two/about-img-1.png"
-import about2img2 from "../assets/about-us/style-two/about-img-2.png"
-import about2img3 from "../assets/about-us/style-two/about-img-3.png"
-import about3img1 from "../assets/about-us/style-three/mission-img-1.png"
-import about3img2 from "../assets/about-us/style-three/mission-img-2.png"
-import about3img3 from "../assets/about-us/style-three/mission-img-3.png"
-import about3img4 from "../assets/about-us/style-three/mission-img-4.png"
-import about4img1 from "../assets/about-us/style-four/values-img.png"
 
 export const generalStyleTabs = [
   { name: "general", title: __("General", "textdomain") },
   { name: "style", title: __("Style", "textdomain") },
-  { name: "advanced", title: __("Advanced", "textdomain") },
+  // { name: "advanced", title: __("Advanced", "textdomain") },
 ];
 
 export const purposeTypeOptions = [
@@ -29,9 +16,12 @@ export const themes = {
     about: {
       heading: {
         image: {
-          desktop: about,
-          mobile: about,
-          tablet: about,
+          desktop:
+            "https://templates.bplugins.com/wp-content/uploads/2025/05/about-2-img-mobile.40704995-4.png",
+          mobile:
+            "https://templates.bplugins.com/wp-content/uploads/2025/05/about-2-img-mobile.40704995-4.png",
+          tablet:
+            "https://templates.bplugins.com/wp-content/uploads/2025/05/about-2-img-mobile.40704995-4.png",
         },
         title: "Our Mission is to Make Work Meaningful",
         button: {
@@ -44,7 +34,7 @@ export const themes = {
         {
           id: 1,
           image: {
-            url: icon1,
+            url: "https://i.ibb.co.com/zpG6rMx/about-2-icon-1.png",
           },
           title: "Business Plans Auth for all",
           description:
@@ -53,7 +43,7 @@ export const themes = {
         {
           id: 2,
           image: {
-            url: icon2,
+            url: "https://i.ibb.co.com/jPYQrB0M/about-2-icon-2.png",
           },
           title: "Business Plans Auth for all",
           description:
@@ -62,7 +52,7 @@ export const themes = {
         {
           id: 3,
           image: {
-            url: icon3,
+            url: "https://i.ibb.co.com/h1ZQj8KN/about-2-icon-3.png",
           },
           title: "Business Plans Auth for all",
           description:
@@ -71,7 +61,7 @@ export const themes = {
         {
           id: 4,
           image: {
-            url: icon4,
+            url: "https://i.ibb.co.com/mVGkYYF8/about-2-icon-4.png",
           },
           title: "Business Plans Auth for all",
           description:
@@ -124,9 +114,9 @@ export const themes = {
         layout: {
           rowDirection: false,
           image: {
-            desktop: { height: "100%", width: "100%" },
-            tablet: { height: "100%", width: "100%" },
-            mobile: { height: "100%", width: "100%" },
+            desktop: { height: "256", width: "526" },
+            tablet: { height: "134", width: "276" },
+            mobile: { height: "156", width: "321" },
           },
           sectionPadding: {
             desktop: 60,
@@ -227,11 +217,21 @@ export const themes = {
         },
         icon: {
           size: {
-            desktop: 119,
-            tablet: 119,
-            mobile: 119,
+            desktop: {
+              width: 119,
+              height: 110,
+            },
+            tablet: {
+              width: 119,
+              height: 110,
+            },
+            mobile: {
+              width: 119,
+              height: 110,
+            },
           },
         },
+
         separator: {
           color: "#495057",
           width: 1,
@@ -293,7 +293,7 @@ export const themes = {
         images: {
           desktop: [
             {
-              url: about2img1,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-1.5ac99ec5-4.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -306,7 +306,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about2img2,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-2.09c2e399-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -319,7 +319,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about2img3,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-3.0548fdb3-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -334,7 +334,7 @@ export const themes = {
           ],
           tablet: [
             {
-              url: about2img1,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-1.5ac99ec5-4.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -347,7 +347,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about2img2,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-2.09c2e399-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -360,7 +360,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about2img3,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-3.0548fdb3-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -375,7 +375,7 @@ export const themes = {
           ],
           mobile: [
             {
-              url: about2img1,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-1.5ac99ec5-4.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -388,7 +388,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about2img2,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-2.09c2e399-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -401,7 +401,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about2img3,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/about-img-3.0548fdb3-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -679,7 +679,7 @@ export const themes = {
         images: {
           desktop: [
             {
-              url: about3img1,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-1.33e0a47a-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -693,7 +693,7 @@ export const themes = {
             },
 
             {
-              url: about3img2,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-2.f0fd6777-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -706,7 +706,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about3img3,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-3.bde6cb09-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -719,7 +719,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about3img4,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-4.203a62d4-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -734,7 +734,7 @@ export const themes = {
           ],
           tablet: [
             {
-              url: about3img1,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-1.33e0a47a-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -748,7 +748,7 @@ export const themes = {
             },
 
             {
-              url: about3img2,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-2.f0fd6777-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -761,7 +761,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about3img3,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-3.bde6cb09-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -774,7 +774,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about3img4,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-4.203a62d4-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -789,7 +789,7 @@ export const themes = {
           ],
           mobile: [
             {
-              url: about3img1,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-1.33e0a47a-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -803,7 +803,7 @@ export const themes = {
             },
 
             {
-              url: about3img2,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-2.f0fd6777-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -816,7 +816,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about3img3,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-3.bde6cb09-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -829,7 +829,7 @@ export const themes = {
               imageGap: 15,
             },
             {
-              url: about3img4,
+              url: "https://templates.bplugins.com/wp-content/uploads/2025/05/mission-img-4.203a62d4-3.png",
               alt: "About Us",
               width: "300",
               height: "225",
@@ -1078,9 +1078,12 @@ export const themes = {
     about: {
       heading: {
         image: {
-          desktop: about4img1,
-          tablet: about4img1,
-          mobile: about4img1,
+          desktop:
+            "https://templates.bplugins.com/wp-content/uploads/2025/05/values-img.b33ad005-3.png",
+          tablet:
+            "https://templates.bplugins.com/wp-content/uploads/2025/05/values-img.b33ad005-3.png",
+          mobile:
+            "https://templates.bplugins.com/wp-content/uploads/2025/05/values-img.b33ad005-3.png",
         },
         title: "We Value Everyone That is Part of Our Company",
         description:
@@ -1172,8 +1175,8 @@ export const themes = {
         layout: {
           rowDirection: false,
           image: {
-            desktop: { height: "100%", width: "100%" },
-            tablet: { height: "100%", width: "100%" },
+            desktop: { height: "544", width: "526" },
+            tablet: { height: "544", width: "526" },
             mobile: { height: "100%", width: "100%" },
             borderRadius: {
               top: "0.25rem",

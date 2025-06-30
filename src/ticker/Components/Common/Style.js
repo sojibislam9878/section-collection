@@ -63,8 +63,8 @@ const Style = ({ attributes, id, isBackend = false }) => {
 
 		
 		${mainSl}{
+		overflow:hidden;
 		
-		margin:0 auto;		
 		}
 	
 		${mainWrapper}{
@@ -210,7 +210,7 @@ const Style = ({ attributes, id, isBackend = false }) => {
 								border-radius:${getBoxCSS(ticker?.icon?.radius)};
 
 							   }
-e					   
+					   
 
 
 

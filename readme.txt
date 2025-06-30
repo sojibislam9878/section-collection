@@ -1,64 +1,31 @@
-=== Section Collection ===
-Contributors: bplugins, abuhayat, btechnologies
+=== Section Collection - Section block library for mostly used website sections ===
+Contributors: bplugins, abuhayat, btechnologies, sojibislam9878, himur98, shihabshamim, tomorbplugins
 Donate link:  https://www.buymeacoffee.com/abuhayat
 Tags: block, section, collection, call to action, Gutenberg block
 Requires at least: 6.2+
 Tested up to: 6.8
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A call to action block collection plugin, newer section will come near future soon.
-
+ Speed up your website building with Section Collection plugin—a powerful collection of ready-to-use blocks for the most commonly needed sections.
 == Description ==
 
- A call to action block collection plugin, newer section will come near future soon.
+ Speed up your website building with **Section Collection** plugin—a powerful collection of ready-to-use blocks for the most commonly needed sections. Choose from multiple stylish designs for each block, and create beautiful pages in minutes. Plus, stay tuned for even more blocks coming soon
 
-## The Best Section Collection Plugin For WordPress Is Here ★★★★★ ## 
+## Key Features ## 
 
-Bullet styles are numerous in the Section Collection plugin. Clicking on styles makes it easy to add them. Categories can be added based on style; Additional category collections are not required in the design. Additionally, the category collection plugin makes it easy for users to use different styles. The website has a more attractive look and feel thanks to these predefined, expertly designed styles.
+* Create entire sections with just one click
+* Switch between section styles instantly
+* Time-saving features for efficient editing
+* Fully responsive design for all devices
+* Easy to customize to fit your needs 
+* Powered by Gutenberg blocks
 
-Just click on the plugin's interface to add a new style. Creating your own designs doesn't have to be labor-intensive or time-consuming.
-
-In short, the Section Collection plugin streamlines and accelerates your design process so you can focus more on your core tasks. The best part is, each click adds a new dimension to your website design.
-
-
-## SECTION-COLLECTION IS PERFECT FOR ##
-
-* **YouTuber**
-* **Content Creators and Bloggers**
-* **Business Websites**
-* **Educational Sites**
-* **Portfolio and Media Sites**
-* **Marketers and Influencers**
-
-
-### SECTION-COLLECTION GAME-CHANGING FEATURES ###
-
-See the features that make Section-Collection the **Best Section-Collection for WordPress**.
-
-* There are four different styles: style-1, style-2, style-3, and style-4.
-* Show/hide elements.
-* Set the border, padding, and wrapper background.
-* Color and typography of the title.
-* Border set, padding, hover colors, and button typography.
-
-### Section-Collection is such a game-changer? ###
-
-* **Styles** — Style-1, Style-2, Style-3 and Style-4 are the four categories of styles. User can choose a style based on what he needs.
-
-* **Customize** — Changing a style is very easy. Color, font and style can be changed to your liking.
-
-* **Responsive Design** — The website performs seamlessly on mobile and tablet devices, enhancing the user experience.
-
-* **Customer Service** — Our staff is always available to assist you. It's easy for users to <a href="https://bplugins.com/support" target="_blank">**ask questions**</a> and get quick answers.
-
-* **Updates** — With frequent updates, we bring the functionality and performance of the plugin up to date. Upgrading to newer versions is also easy, ensuring uninterrupted service.
-
-#### Section-Collection is perfect for: ####
-✔ Bloggers
-✔ Course Creators
+## Section-Collection is perfect for: ##
+✔ Web designer
+✔ Agencies 
 ✔ Coaches / Trainers
 ✔ eCommerce Store Owners
 ✔ Niche Sites
@@ -68,12 +35,14 @@ See the features that make Section-Collection the **Best Section-Collection for 
 ✔ Personal Brands
 ✔ Real Estate Agents
 ✔ Artists & Photographers
-✔ All WordPress Websites
+
+
+
 
 = How to use =
-- First, install the Plugin Name plugin.
-- Add the Block Name block from the block category called "Widgets" in the Gutenberg editor.
-- You can change block settings from the right-side settings sidebar.
+- First, install the Plugin
+- Add the section block from the block category called "SECTION COLLECTION" in the Gutenberg editor in page or post.
+- You can change block settings from the right-side settings .
 - Enjoy!
 
 * For installation help click on Installation Tab.
@@ -85,7 +54,7 @@ See the features that make Section-Collection the **Best Section-Collection for 
 
 ### ⭐ Check out the Parent Plugin of this plugin-
 
-🔥 **[B Blocks](https://bblockswp.com)** – Best gutenberg blocks collections for WordPress.
+🔥 **[B Blocks](https://bblockswp.com)** – Best Gutenberg blocks collections for WordPress.
 
 
 ### ⭐ Check out our other WordPress Plugins-
@@ -155,8 +124,20 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
-= 1.0.1 - [date]
-*
+= 1.0.3 - 29 June, 2025 =
+* Added 1 new sections block
+1. Pricing Table Section
+
+= 1.0.2 - 07 May, 2025 =
+* Added 8 new sections blocks
+1. Timeline Section
+2. Testimonial Section
+3. FAQ Section
+4. Ticker Section
+5. Info-list Section
+6. Call To Action Section
+7. About Us Section
+8.Team Section
 
 = 1.0.1 - 25 April, 2025 =
 * Compatible with WordPress 6.8;
@@ -166,6 +147,12 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Upgrade Notice ==
+
+= 1.0.3 - 29 June, 2025 =
+* Added 1 new sections block
+
+= 1.0.2 - 07 May, 2025 =
+* Added 8 new sections blocks
 
 = 1.0.1 - 25 April, 2025 =
 * Compatible with WordPress 6.8;

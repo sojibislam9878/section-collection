@@ -4,12 +4,13 @@ import {
   getBoxCSS,
   getColorsCSS,
   getTypoCSS,
+  isValidCSS,
 } from "../../../../../bpl-tools/utils/getCSS";
 import { generateCSS } from "../../../../../bpl-tools/Advanced/generateCSS";
 import {
   mobileBreakpoint,
   tabBreakpoint,
-} from "../../../../../bpl-tools/utils/data";  
+} from "../../../../../bpl-tools/utils/data";
 
 const Style = ({ attributes, id }) => {
   const { styles, about, themeSl, advanced } = attributes || {};
@@ -112,7 +113,6 @@ const Style = ({ attributes, id }) => {
       ${getTypoCSS("", heading?.title?.typography)?.googleFontLink}
       ${getTypoCSS("", heading?.description?.typography)?.googleFontLink}
       ${getTypoCSS("", heading?.button?.typography)?.googleFontLink}
-
       ${getTypoCSS("", items?.title?.typography)?.googleFontLink}
       ${getTypoCSS("", items?.description?.typography)?.googleFontLink}
       ${getTypoCSS("", item?.title?.typography)?.googleFontLink}
@@ -131,14 +131,10 @@ const Style = ({ attributes, id }) => {
         getTypoCSS(aboutFourDescriptionSl, heading?.description?.typography)
           ?.styles
       }
-      
-
       ${getTypoCSS(bodyTitleSl, items?.title?.typography)?.styles}
       ${getTypoCSS(aboutTwoItemsTitleSl, items?.title?.typography)?.styles}
       ${getTypoCSS(aboutFourItemTitleSl, items?.title?.typography)?.styles}
       ${getTypoCSS(aboutThreeItemTitleSl, item?.title?.typography)?.styles}
-
-
       ${getTypoCSS(bodyDescriptionSl, items?.description?.typography)?.styles}
       ${
         getTypoCSS(aboutTwoItemsDescriptionSl, items?.description?.typography)
@@ -152,24 +148,22 @@ const Style = ({ attributes, id }) => {
         getTypoCSS(aboutThreeItemDescriptionSl, item?.description?.typography)
           ?.styles
       }
-
-
       ${getTypoCSS(btnTextSl, heading?.button?.typography)?.styles}
       ${getTypoCSS(aboutTwoBadgeTextSl, heading?.button?.typography)?.styles}
       ${getTypoCSS(aboutThreeBtnTextSl, heading?.button?.typography)?.styles}
       ${getTypoCSS(aboutFourBtnTextSl, heading?.button?.typography)?.styles}
 
 
-
-      ${sectionSpaceBottomSl} {
-       padding-bottom: ${heading?.layout?.sectionPadding?.desktop}px;
-        
+      ${sectionSpaceBottomSl}{
+        ${isValidCSS(
+          "padding-bottom",
+          `${heading?.layout?.sectionPadding?.desktop}px`
+        )}
       }
 
-
       ${aboutFourItemIconSl} {
-        color: ${items?.icon?.bgColor?.normal.color};
-        fill: ${items?.icon?.bgColor?.normal.color};
+        ${isValidCSS("color", items?.icon?.bgColor?.normal.color)}
+        ${isValidCSS("fill", items?.icon?.bgColor?.normal.color)}
         border-radius: ${items?.icon?.borderRadius?.top} ${
           items?.icon?.borderRadius?.right
         } ${items?.icon?.borderRadius?.bottom} ${
@@ -212,8 +206,7 @@ const Style = ({ attributes, id }) => {
 
       ${aboutFourItemIconSl} svg{
         width: ${items?.icon?.size?.desktop}px;
-        height: ${items?.icon?.size?.desktop}px;
-        
+        height: ${items?.icon?.size?.desktop}px; 
       }
 
       ${aboutFourBtnIconSl} svg{
@@ -224,7 +217,7 @@ const Style = ({ attributes, id }) => {
         margin-right: ${iconTextGap?.desktop}px;
       }
 
-      ${aboutFourBtnTextSl} {
+      ${aboutFourBtnTextSl}{
         color: ${bgColor?.normal?.color};
       }
 
@@ -300,7 +293,7 @@ const Style = ({ attributes, id }) => {
         } ${borderRadius?.left};
       }
 
-      ${aboutThreeTitleSl} {
+      ${aboutThreeTitleSl}{
         ${getColorsCSS(title)}
       }
 
@@ -375,6 +368,9 @@ const Style = ({ attributes, id }) => {
         } ${heading?.layout?.image?.borderRadius?.bottom} ${
           heading?.layout?.image?.borderRadius?.left
         };
+        max-width: 100%;
+        width: 100%;
+        height: 390px;
       }
 
       ${aboutTwoRowSl} {
@@ -431,6 +427,7 @@ const Style = ({ attributes, id }) => {
         max-width: 100%;
         width: ${heading?.layout?.image?.desktop?.width}px;
         height: ${heading?.layout?.image?.desktop?.height}px;
+        object-fit: cover;
       }
 
       ${aboutFourImgRowSl}{
@@ -463,7 +460,7 @@ const Style = ({ attributes, id }) => {
       }
 
       ${btnFs20Sl} {
-        font-size: ${icon?.size?.desktop}px !important;
+        font-size: ${icon?.size?.desktop}px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -508,15 +505,18 @@ const Style = ({ attributes, id }) => {
       }
 
       ${btnSl}:hover {
-        color: ${bgColor?.hover?.color};
         background-color: ${bgColor?.hover?.bg};
         background-image: ${
           bgColor?.hover?.bgType === "gradient"
             ? `${bgColor?.hover?.gradient}`
             : "none"
         };
-      
       }
+
+      ${btnSl}:hover .btn-text{
+        color: ${bgColor?.hover?.color};
+      }
+
 
       ${btnSl}:first-child:active{
         color: ${bgColor?.hover?.color};
@@ -541,15 +541,21 @@ const Style = ({ attributes, id }) => {
       }
 
       ${bodyIconsSl}{
-        width: ${items?.icon?.size?.desktop}px;
-        height: auto;
+        width: ${items?.icon?.size?.desktop?.width}px;
+        height: ${items?.icon?.size?.desktop?.height}px;
       }
 
 
       ${mobileBreakpoint} {
+       ${aboutTwoImgSl}{
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+      }
+
         ${bodyIconsSl}{
-          height: auto;
-          width: ${items?.icon?.size?.mobile}px;
+          width: ${items?.icon?.size?.mobile?.width}px;
+          height: ${items?.icon?.size?.mobile?.height}px;
         }
 
         ${btnIconSl} {
@@ -566,13 +572,10 @@ const Style = ({ attributes, id }) => {
           height: ${icon?.size?.mobile}px;
         }
 
-        ${bodyIconsSl}{
-          width: ${items?.icon?.size?.mobile}px;
-          height: auto;
-        }
+     
 
         ${btnFs20Sl} {
-          font-size: ${icon?.size?.mobile}px !important;
+          font-size: ${icon?.size?.mobile}px;
         }
 
         ${btnIconSl} svg{
@@ -591,8 +594,8 @@ const Style = ({ attributes, id }) => {
 
         ${aboutFourImgRowSl}{
           max-width: 100%;
-          width: ${heading?.layout?.image?.mobile?.width}px;
-          height: ${heading?.layout?.image?.mobile?.height}px;
+          width: ${heading?.layout?.image?.mobile?.width};
+          height: ${heading?.layout?.image?.mobile?.height};
         }
 
          ${aboutTwoBadgeIconSl} svg {
@@ -650,7 +653,7 @@ const Style = ({ attributes, id }) => {
          margin: ${getBoxCSS(styles?.bg?.margin?.mobile)};
         }
 
-        ${aboutThreeBodySl}{
+        ${aboutThreeBodySl}{ 
          padding: ${getBoxCSS(styles?.bg?.padding?.mobile)};
          margin: ${getBoxCSS(styles?.bg?.margin?.mobile)};
         }
@@ -663,9 +666,9 @@ const Style = ({ attributes, id }) => {
 
 
       ${tabBreakpoint}{
-        ${bodyIconsSl}{
-          height: auto;
-          width: ${items?.icon?.size?.tablet}px;
+         ${bodyIconsSl}{
+          width: ${items?.icon?.size?.tablet?.width}px;
+          height: ${items?.icon?.size?.tablet?.height}px;
         }
 
         ${aboutSl}{
@@ -683,14 +686,14 @@ const Style = ({ attributes, id }) => {
          margin: ${getBoxCSS(styles?.bg?.margin?.tablet)};
         }
 
-         ${aboutFourBodySl}{
+        ${aboutFourBodySl}{
          padding: ${getBoxCSS(styles?.bg?.padding?.tablet)};
          margin: ${getBoxCSS(styles?.bg?.margin?.tablet)};
         }
 
         ${btnFs20Sl} {
-          font-size: ${items?.icon?.size?.tablet}px !important;
-        }
+          font-size: ${items?.icon?.size?.tablet}px;
+        }          
 
         ${btnIconSl} svg{
           width: ${icon?.size?.tablet}px;
@@ -701,13 +704,8 @@ const Style = ({ attributes, id }) => {
           margin-right: ${iconTextGap?.tablet}px;
         }
 
-        ${bodyIconsSl}{
-          width: ${items?.icon?.size?.tablet}px;
-          height: auto;
-        }
-
         ${btnFs20Sl} {
-          font-size: ${icon?.size?.tablet}px !important;
+          font-size: ${icon?.size?.tablet}px;
         }
 
         ${btnIconSl} svg{

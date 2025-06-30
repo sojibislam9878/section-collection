@@ -3,11 +3,12 @@ import './testimonial_block';
 import './timeline_block';
 import './ticker'
 import './about-us'
-import './team_section'
+import './team-section'
 import './faq'
 import './call-to-actions'
 import './info-list-block'
 import './hero-section'
+import './pricing-table-section'
 
 wp.domReady(() => {
     const categories = wp.blocks.getCategories().map((category) => {

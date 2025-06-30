@@ -14,8 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   generateCSS: () => (/* binding */ generateCSS)
 /* harmony export */ });
-/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/data */ "../bpl-tools/utils/data.js");
-/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/functions */ "../bpl-tools/utils/functions.js");
+/* harmony import */ var _utils_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/common */ "../bpl-tools/utils/common.js");
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/data */ "../bpl-tools/utils/data.js");
 /* harmony import */ var _utils_getCSS__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getCSS */ "../bpl-tools/utils/getCSS.js");
 
 
@@ -160,19 +160,19 @@ const generateCSS = (id, advanced, isBackend = false) => {
 			${hCSS}
 		}` : ''}
 
-		${resCSS ? `${_utils_data__WEBPACK_IMPORTED_MODULE_0__.deskBreakpoint} {
+		${resCSS ? `${_utils_data__WEBPACK_IMPORTED_MODULE_1__.deskBreakpoint} {
 			${selector}{
 				${resCSS}
 			}
 		}` : ''}
 
-		${tCSS ? `${_utils_data__WEBPACK_IMPORTED_MODULE_0__.tabBreakpoint} {
+		${tCSS ? `${_utils_data__WEBPACK_IMPORTED_MODULE_1__.tabBreakpoint} {
 			${selector}{
 				${tCSS}
 			}
 		}` : ''}
 
-		${mCSS ? `${_utils_data__WEBPACK_IMPORTED_MODULE_0__.mobileBreakpoint} {
+		${mCSS ? `${_utils_data__WEBPACK_IMPORTED_MODULE_1__.mobileBreakpoint} {
 			${selector}{
 				${mCSS}
 			}
@@ -182,8 +182,8 @@ const generateCSS = (id, advanced, isBackend = false) => {
 		${(0,_utils_getCSS__WEBPACK_IMPORTED_MODULE_2__.getAdvBGCSS)(background?.hover, selector, true)}
 		${(0,_utils_getCSS__WEBPACK_IMPORTED_MODULE_2__.getOverlayCSS)(background?.overlay, selector)}
 		${(0,_utils_getCSS__WEBPACK_IMPORTED_MODULE_2__.getOverlayCSS)(background?.hoverOverlay, selector, true)}
-		${(0,_utils_functions__WEBPACK_IMPORTED_MODULE_1__.isExist)(transform?.normal) ? (0,_utils_getCSS__WEBPACK_IMPORTED_MODULE_2__.getTransformCSS)(transform?.normal, selector) : ""}
-		${(0,_utils_functions__WEBPACK_IMPORTED_MODULE_1__.isExist)(transform?.hover) ? (0,_utils_getCSS__WEBPACK_IMPORTED_MODULE_2__.getTransformCSS)(transform?.hover, selector, true) : ""}
+		${(0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.isExist)(transform?.normal) ? (0,_utils_getCSS__WEBPACK_IMPORTED_MODULE_2__.getTransformCSS)(transform?.normal, selector) : ""}
+		${(0,_utils_common__WEBPACK_IMPORTED_MODULE_0__.isExist)(transform?.hover) ? (0,_utils_getCSS__WEBPACK_IMPORTED_MODULE_2__.getTransformCSS)(transform?.hover, selector, true) : ""}
 
 		${css}
 	`.replace(/\s+/g, ' ');
@@ -1616,6 +1616,122 @@ function castImmutable(value) {
 
 /***/ }),
 
+/***/ "../bpl-tools/utils/common.js":
+/*!************************************!*\
+  !*** ../bpl-tools/utils/common.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   escapeHTML: () => (/* binding */ escapeHTML),
+/* harmony export */   isExist: () => (/* binding */ isExist),
+/* harmony export */   sanitizeHTML: () => (/* binding */ sanitizeHTML),
+/* harmony export */   sanitizeURL: () => (/* binding */ sanitizeURL)
+/* harmony export */ });
+const isExist = value => {
+  if (value === undefined || value === null || value === '') {
+    return false;
+  }
+  if (Array.isArray(value) && value.length === 0) {
+    return false;
+  }
+  if (typeof value === 'object' && Object.keys(value).length === 0) {
+    return false;
+  }
+  if (typeof value === 'string' && value.trim() === '') {
+    return false;
+  }
+  if (typeof value === 'number' && value === 0) {
+    return false;
+  }
+  return true;
+};
+const escapeHTML = (input = '') => {
+  if (!input) {
+    return '';
+  }
+
+  // Regular expression to match all HTML tags and their attributes
+  return input?.replace(/<([a-z][a-z0-9]*)\b([^>]*)>/gi, (match, tagName, attrs) => {
+    // List of allowed tags and their attributes
+    const allowedTags = ['b', 'strong', 'i', 'em', 'span', 'a', 'br'];
+    const allowedAttrs = ['style', 'href', 'target', 'rel', 'class'];
+
+    // If the tag is allowed, keep it, but sanitize its attributes
+    if (allowedTags.includes(tagName.toLowerCase())) {
+      // Process the tag's attributes
+      const sanitizedAttrs = attrs.replace(/([a-z0-9-]+)=["'][^"']*["']/gi, (attrMatch, attrName) => {
+        // Only keep allowed attributes
+        if (allowedAttrs.includes(attrName.toLowerCase())) {
+          return attrMatch; // Keep allowed attributes as they are
+        }
+        return ''; // Remove any other attributes
+      });
+      return `<${tagName}${sanitizedAttrs}>`;
+    }
+    return match?.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  });
+};
+const sanitizeURL = inputUrl => {
+  try {
+    const url = new URL(inputUrl);
+
+    // 1. Check for safe protocols
+    if (!['http:', 'https:'].includes(url.protocol)) {
+      return null;
+    } else {
+      // 2. Strip query and fragment for safety
+      // url.search = '';
+      // url.hash = '';
+
+      return url.toString();
+    }
+  } catch (err) {
+    if (typeof inputUrl === 'string' && inputUrl.startsWith('/') && !inputUrl.startsWith('//')) {
+      return inputUrl;
+    } else {
+      return null;
+    }
+  }
+};
+const sanitizeHTML = input => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(input, 'text/html');
+  const allowedTags = ['b', 'strong', 'i', 'em', 'span', 'a', 'br'];
+  const allowedAttrs = ['style', 'href', 'target', 'rel', 'class'];
+  doc.body.querySelectorAll('*').forEach(node => {
+    // Remove disallowed tags
+    if (!allowedTags.includes(node.tagName.toLowerCase())) {
+      node.remove();
+      return;
+    }
+
+    // Loop through attributes and sanitize
+    [...node.attributes].forEach(attr => {
+      if (!allowedAttrs.includes(attr.name)) {
+        node.removeAttribute(attr.name);
+      }
+
+      // if (attr.name === "href" && attr.value.trim().toLowerCase().startsWith("javascript:")) {
+      // 	node.removeAttribute("href");
+      // }
+
+      if (attr.name === 'href') {
+        const sanitizeHref = sanitizeURL(attr.value);
+        if (sanitizeHref) {
+          node.setAttribute('href', sanitizeHref);
+        } else {
+          node.removeAttribute('href');
+        }
+      }
+    });
+  });
+  return doc.body.innerHTML;
+};
+
+/***/ }),
+
 /***/ "../bpl-tools/utils/data.js":
 /*!**********************************!*\
   !*** ../bpl-tools/utils/data.js ***!
@@ -1629,7 +1745,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   tabBreakpoint: () => (/* binding */ tabBreakpoint)
 /* harmony export */ });
 const deskBreakpoint = '@media only screen and (min-width: 1025px)';
-const tabBreakpoint = '@media only screen and (min-width: 641px) and (max-width: 1024px)';
+const tabBreakpoint = '@media only screen and (max-width: 1024px)';
 const mobileBreakpoint = '@media only screen and (max-width: 640px)';
 
 /***/ }),
@@ -1643,11 +1759,10 @@ const mobileBreakpoint = '@media only screen and (max-width: 640px)';
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   debounce: () => (/* binding */ debounce),
-/* harmony export */   escapeHTML: () => (/* binding */ escapeHTML),
 /* harmony export */   getBoxValue: () => (/* binding */ getBoxValue),
 /* harmony export */   getImageSizes: () => (/* binding */ getImageSizes),
-/* harmony export */   isExist: () => (/* binding */ isExist),
 /* harmony export */   tabController: () => (/* binding */ tabController),
+/* harmony export */   updateAttributes: () => (/* binding */ updateAttributes),
 /* harmony export */   updateData: () => (/* binding */ updateData)
 /* harmony export */ });
 /* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! immer */ "../bpl-tools/node_modules/immer/dist/immer.mjs");
@@ -1710,6 +1825,13 @@ const updateData = (attr, value, ...props) => {
     draft[currentProp] = updateData(draft[currentProp], value, ...remainingProps);
   });
 };
+const updateAttributes = (attributes, setAttributes) => {
+  return (object, val, ...props) => {
+    setAttributes({
+      [object]: updateData(attributes[object], val, ...props)
+    });
+  };
+};
 const debounce = (fn, delay) => {
   let timeoutId;
   return (...args) => {
@@ -1718,46 +1840,6 @@ const debounce = (fn, delay) => {
       fn(...args);
     }, delay);
   };
-};
-const isExist = value => {
-  if (value === undefined || value === null || value === '') {
-    return false;
-  }
-  if (Array.isArray(value) && value.length === 0) {
-    return false;
-  }
-  if (typeof value === 'object' && Object.keys(value).length === 0) {
-    return false;
-  }
-  if (typeof value === 'string' && value.trim() === '') {
-    return false;
-  }
-  if (typeof value === 'number' && value === 0) {
-    return false;
-  }
-  return true;
-};
-const escapeHTML = input => {
-  // Regular expression to match all HTML tags and their attributes
-  return input.replace(/<([a-z][a-z0-9]*)\b([^>]*)>/gi, (match, tagName, attrs) => {
-    // List of allowed tags and their attributes
-    const allowedTags = ['b', 'strong', 'i', 'em', 'span', 'a', 'br'];
-    const allowedAttrs = ['style', 'href', 'target', 'rel', 'class'];
-
-    // If the tag is allowed, keep it, but sanitize its attributes
-    if (allowedTags.includes(tagName.toLowerCase())) {
-      // Process the tag's attributes
-      const sanitizedAttrs = attrs.replace(/([a-z0-9-]+)=["'][^"']*["']/gi, (attrMatch, attrName) => {
-        // Only keep allowed attributes
-        if (allowedAttrs.includes(attrName.toLowerCase())) {
-          return attrMatch; // Keep allowed attributes as they are
-        }
-        return ''; // Remove any other attributes
-      });
-      return `<${tagName}${sanitizedAttrs}>`;
-    }
-    return match.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  });
 };
 
 /***/ }),
@@ -1795,7 +1877,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Mask_assets_shapes_sketch_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/sketch.svg */ "../bpl-tools/Components/Mask/assets/shapes/sketch.svg");
 /* harmony import */ var _Components_Mask_assets_shapes_triangle_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/triangle.svg */ "../bpl-tools/Components/Mask/assets/shapes/triangle.svg");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./data */ "../bpl-tools/utils/data.js");
-/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./functions */ "../bpl-tools/utils/functions.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./common */ "../bpl-tools/utils/common.js");
 
 
 
@@ -1804,7 +1886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const isValidCSS = (p, v) => (0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(v) ? `${p}: ${v};` : '';
+const isValidCSS = (p, v, i) => (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(v) ? `${p}: ${v};` : '';
 const getBackgroundCSS = (bg, isSolid = true, isGradient = true, isImage = true) => {
   const {
     type = 'solid',
@@ -1965,6 +2047,7 @@ const getTypoCSS = (selector, typo, isFamily = true) => {
       tablet: 15,
       mobile: 15
     },
+    fontSizeUnit = 'px',
     fontStyle = 'normal',
     textTransform = 'none',
     textDecoration = 'auto',
@@ -1975,10 +2058,18 @@ const getTypoCSS = (selector, typo, isFamily = true) => {
   const desktopFontSize = fontSize?.desktop || fontSize;
   const tabletFontSize = fontSize?.tablet || desktopFontSize;
   const mobileFontSize = fontSize?.mobile || tabletFontSize;
+  const checkUnit = (size = 15) => {
+    const value = String(size);
+    const units = ['px', 'em', 'rem', '%', 'vh', 'vw'];
+    if (units.some(unit => value.endsWith(unit))) {
+      return value;
+    }
+    return `${value}px`;
+  };
   const styles = `
 		${isEmptyFamily ? '' : `font-family: '${fontFamily}', ${fontCategory};`}
 		${isValidCSS('font-weight', fontWeight)}
-		${isValidCSS('font-size', desktopFontSize ? `${desktopFontSize}px` : '')}
+		${isValidCSS('font-size', checkUnit(desktopFontSize))}
 		${isValidCSS('font-style', fontStyle)}
 		${isValidCSS('text-transform', textTransform)}
 		${isValidCSS('text-decoration', textDecoration)}
@@ -1996,12 +2087,12 @@ const getTypoCSS = (selector, typo, isFamily = true) => {
 		}
 		${_data__WEBPACK_IMPORTED_MODULE_6__.tabBreakpoint} {
 			${selector}{
-				${isValidCSS('font-size', tabletFontSize ? `${tabletFontSize}px` : '')}
+				${isValidCSS('font-size', checkUnit(tabletFontSize))}
 			}
 		}
 		${_data__WEBPACK_IMPORTED_MODULE_6__.mobileBreakpoint} {
 			${selector}{
-				${isValidCSS('font-size', mobileFontSize ? `${mobileFontSize}px` : '')}
+				${isValidCSS('font-size', checkUnit(mobileFontSize))}
 			}
 		}`.replace(/\s+/g, ' ').trim()
   };
@@ -2048,7 +2139,7 @@ const getImagePosition = img => {
     size = 'cover',
     customSize = '0px'
   } = img || {};
-  const cd = v => 'initial' !== v || (0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(v);
+  const cd = v => 'initial' !== v || (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(v);
   return `
 		${cd(position) ? `background-position: ${'custom' === position ? `${xPosition} ${yPosition}` : position};` : ''}
 		${attachment && cd(attachment) ? `background-attachment: ${attachment};` : ''}
@@ -2059,9 +2150,9 @@ const getImagePosition = img => {
 const getImageCSS = (img = {}) => {
   if (img) {
     return {
-      desktop: (0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? `background-image: url(${img.url}); ${getImagePosition(img?.desktop)}` : '',
-      tablet: (0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? getImagePosition(img?.tablet) : '',
-      mobile: (0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? getImagePosition(img?.mobile) : ''
+      desktop: (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? `background-image: url(${img.url}); ${getImagePosition(img?.desktop)}` : '',
+      tablet: (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? getImagePosition(img?.tablet) : '',
+      mobile: (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? getImagePosition(img?.mobile) : ''
     };
   }
   return '';
@@ -2159,7 +2250,7 @@ const getOverlayCSS = (overlay, selector, isHover = false) => {
 };
 const getTransformCSS = (transform, selector, isHover = false) => {
   const generateTransformCSS = (value, device = 'desktop') => {
-    if (!(0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(value)) return '';
+    if (!(0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(value)) return '';
     const {
       skew,
       scale,
@@ -2176,36 +2267,36 @@ const getTransformCSS = (transform, selector, isHover = false) => {
     } = scale || {};
     const transforms = [];
     //skew
-    if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew)) {
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew?.[device]?.x)) transforms.push(`skewX(${skew[device].x}deg)`);
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew?.[device]?.y)) transforms.push(`skewY(${skew[device].y}deg)`);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew?.[device]?.x)) transforms.push(`skewX(${skew[device].x}deg)`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew?.[device]?.y)) transforms.push(`skewY(${skew[device].y}deg)`);
     }
     //scale
     if (isProportion) {
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.scale)) transforms.push(`scale(${scale[device].scale})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.scale)) transforms.push(`scale(${scale[device].scale})`);
     } else {
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.x)) transforms.push(`scaleX(${scale[device].x})`);
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.y)) transforms.push(`scaleY(${scale[device].y})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.x)) transforms.push(`scaleX(${scale[device].x})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.y)) transforms.push(`scaleY(${scale[device].y})`);
     }
 
     //rotate
-    if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate)) {
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.z)) transforms.push(`rotateZ(${rotate[device].z}deg)`);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.z)) transforms.push(`rotateZ(${rotate[device].z}deg)`);
       if (threeDRotate) {
-        if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.x)) transforms.push(`rotateX(${rotate[device].x}deg)`);
-        if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.y)) transforms.push(`rotateY(${rotate[device].y}deg)`);
+        if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.x)) transforms.push(`rotateX(${rotate[device].x}deg)`);
+        if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.y)) transforms.push(`rotateY(${rotate[device].y}deg)`);
       }
     }
 
     //offset
-    if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset)) {
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset?.[device]?.x)) transforms.push(`translateX(${offset[device].x})`);
-      if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset?.[device]?.y)) transforms.push(`translateY(${offset[device].y})`);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset?.[device]?.x)) transforms.push(`translateX(${offset[device].x})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset?.[device]?.y)) transforms.push(`translateY(${offset[device].y})`);
     }
 
     //flip
-    if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(flipX)) transforms.push(flipX ? 'scaleX(-1)' : '');
-    if ((0,_functions__WEBPACK_IMPORTED_MODULE_7__.isExist)(flipY)) transforms.push(flipY ? 'scaleY(-1)' : '');
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(flipX)) transforms.push(flipX ? 'scaleX(-1)' : '');
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(flipY)) transforms.push(flipY ? 'scaleY(-1)' : '');
     if (transforms.length === 0) return '';
     return isValidCSS('transform', transforms.join(' '));
   };
