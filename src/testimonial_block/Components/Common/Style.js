@@ -14,7 +14,7 @@ const Style = ({ attributes, id }) => {
     sectionBody || {};
   const { testiBorderRadius, shadow, border } = testimonialBody || {};
   const { section, testimonial } = styles || {};
-  const { scroll, fogEffect, tagsAlignment } = options || {};
+  const { scroll, fogEffect, tagsAlignment, adjustContent ="35rem" } = options || {};
 
   const mainSl = `#${id}`;
   const mainContSl = `${mainSl} .mainCont`;
@@ -75,12 +75,12 @@ mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
 		${getTypoCSS("", testimonial.content.typo)?.googleFontLink}
 		${getTypoCSS("", testimonial.tags.typo)?.googleFontLink}
 
-        ${getTypoCSS(titleSl, section.title.typo)?.styles}
-        ${getTypoCSS(subTitleSl, section.subtitle.typo)?.styles}
-        ${getTypoCSS(nameSl, testimonial.name.typo)?.styles}
-        ${getTypoCSS(designationSl, testimonial.designation.typo)?.styles}
-        ${getTypoCSS(contentSl, testimonial.content.typo)?.styles}
-        ${getTypoCSS(tagsSl, testimonial.tags.typo)?.styles}
+    ${getTypoCSS(titleSl, section.title.typo)?.styles}
+    ${getTypoCSS(subTitleSl, section.subtitle.typo)?.styles}
+    ${getTypoCSS(nameSl, testimonial.name.typo)?.styles}
+    ${getTypoCSS(designationSl, testimonial.designation.typo)?.styles}
+    ${getTypoCSS(contentSl, testimonial.content.typo)?.styles}
+    ${getTypoCSS(tagsSl, testimonial.tags.typo)?.styles}
 
 		${mainContSl}{
 		    justify-content: ${alignment};
@@ -154,8 +154,12 @@ mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
 		  }
 		
 		  @keyframes scrollY {
+			
+			form {
+			  transform: translateY(0%);
+			}
 			to {
-			  transform: translateY(calc(-50% - 0.5rem));
+			  transform: translateY(calc(-50% - ${adjustContent}));
 			}
 		  }
 

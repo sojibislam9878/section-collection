@@ -352,6 +352,7 @@
         "slidingSpeed": 5000,
         "navButton": false,
         "keyboardControl": true,
+        "adjustContent": "35rem",
         "glowEffect": true
       }
     },

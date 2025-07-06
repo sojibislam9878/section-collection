@@ -62,7 +62,9 @@ const General = ({ attributes, setAttributes, device }) => {
     glowEffect,
     keyboardControl,
     navButton,
+    adjustContent = "35rem"
   } = options || {};
+  
 
   return (
     <>
@@ -263,6 +265,23 @@ const General = ({ attributes, setAttributes, device }) => {
             });
           }}
         />
+        
+        {
+          selectedTheme === "theme1" && <UnitControl
+            className="mt10"
+            label={__("Adjust Your Content", "b-block")}
+            help={__("Note: If your content is large, consider increasing the value accordingly.")}
+            step={1}
+            shiftStep={5}
+            value={adjustContent}
+            onChange={(value) => {
+              setAttributes({
+                options: updateData(options, value, "adjustContent"),
+              });
+            }}
+          />
+        }
+
       </PanelBody>
 
       {/*---------------------- Testimonial Panel -------------------- */}

@@ -26,6 +26,8 @@ export const themeChange = (theme = "theme1", attributes) =>
   produce(attributes, (draft) => {
     draft["selectedTheme"] = theme;
 
+    console.log(draft);
+    
     switch (theme) {
       //======================= case for theme 1 ========================//
       case "theme1":
@@ -102,6 +104,7 @@ export const themeChange = (theme = "theme1", attributes) =>
           left: "24px",
         };
         draft["layout"]["sectionHeader"]["status"] = true;
+        draft["options"]["adjustContent"] = "35rem";
 
         break;
 

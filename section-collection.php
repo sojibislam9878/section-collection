@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Section Collection
  * Description: A versatile section collection plugin featuring essential UI blocks to craft impactful, engaging, and user-centric web pages.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3

@@ -4,7 +4,7 @@ Donate link:  https://www.buymeacoffee.com/abuhayat
 Tags: block, section, collection, call to action, Gutenberg block
 Requires at least: 6.2+
 Tested up to: 6.8
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -124,6 +124,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
+= 1.0.4 - 06 July, 2025 =
+* Testimonial Theme 1 content bugs fixed
+
 = 1.0.3 - 29 June, 2025 =
 * Added 1 new sections block
 1. Pricing Table Section
@@ -147,6 +150,9 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 
 == Upgrade Notice ==
+
+= 1.0.4 - 06 July, 2025 =
+* Testimonial Theme 1 content bugs fixed
 
 = 1.0.3 - 29 June, 2025 =
 * Added 1 new sections block
